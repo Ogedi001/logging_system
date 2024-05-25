@@ -22,8 +22,9 @@ The backend is built with Node.js and Express.js, providing APIs to ingest and m
 
 ## Installation
 
-### Prerequisites
 
-- Node.js and npm
-- Elasticsearch
-- Grafana
+### Prerequisites
+- [Node.js and npm](https://nodejs.org/)
+- [Elasticsearch](https://www.elastic.co/guide/en/elasticsearch/reference/8.13/setup.html)
+- [Grafana](https://grafana.com/docs/grafana/latest/)
+
