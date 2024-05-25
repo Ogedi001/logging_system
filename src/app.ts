@@ -11,7 +11,7 @@ import { StatusCodes } from "http-status-codes";
 
 const app: Application = express();
 const server = createServer(app);
-const PORT = process.env.PORT || 3000;
+const PORT = process.env.PORT || 4000;
 
 app.use(express.json());
 app.use(express.urlencoded({ extended: true }));
