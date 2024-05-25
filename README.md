@@ -28,3 +28,40 @@ The backend is built with Node.js and Express.js, providing APIs to ingest and m
 - [Elasticsearch](https://www.elastic.co/guide/en/elasticsearch/reference/8.13/setup.html)
 - [Grafana](https://grafana.com/docs/grafana/latest/)
 
+
+1. **Clone the Repository:**
+    ```sh
+    git clone https://github.com/Ogedi001/logging_system.git
+    cd logging_system
+    ```
+
+2. **Install Dependencies:**
+    ```sh
+    npm install
+    ```
+
+3. **Environment Variables:**
+    Create a `.env` file in the root of the project and add the following environment variables:
+    ```env
+    PORT=5000
+    ELASTIC_URL=http://localhost:9200/  #elasticsearch runs locally on port 9200 by default
+    ELASTIC_CLOUD_ID= <elastic cloud id>
+    ELASTIC_CLOUD_PASSWORD=<cloud password>
+    ELASTIC_USERNAME=elastic
+    ELASTIC_PASSWORD=<local password> 
+    ```
+
+4. **Configure Elasticsearch:**
+    - Ensure Elasticsearch is running locally or update the configuration to point to your Elasticsearch instance.
+    - Update the Elasticsearch configuration in the `src/config/elasticsearch.ts` file if necessary.
+
+5. **Configure Grafana:**
+    - Ensure Grafana is running locally.
+    - Import the provided Grafana dashboards from the `grafana-dashboards` directory.
+
+6. **Run the Application:**
+    ```sh
+    npm start
+    ```
+
+    The application will start on `http://localhost:5000`.
