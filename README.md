@@ -63,6 +63,9 @@ The backend is built with Node.js and Express.js, providing APIs to ingest and m
 
  **N/B** for more info on installation and set up visit [Grafana](https://grafana.com/docs/grafana/latest/)
 
+![alt text](<src/assets/grafana es config.jpg>)
+
+
 6. **Run the Application:**
     ```sh
     npm start or npm run dev
