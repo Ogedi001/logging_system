@@ -12,3 +12,17 @@ Grafana is an open-source platform for monitoring and observability. It provides
 
 ### 3. Node.js Backend
 The backend is built with Node.js and Express.js, providing APIs to ingest and manage log data. The backend communicates with Elasticsearch to index and retrieve logs.
+
+## Features
+
+ **Log Ingestion:** API endpoints to ingest logs into Elasticsearch.
+ **Index Management:** Automatically create and manage indices in Elasticsearch.
+ **Data Visualization:** Pre-configured Grafana dashboards for log visualization and analysis.
+ **Timestamp Management:** Automatic addition of @timestamp field to log entries for precise time-based querying.
+
+## Installation
+
+### Prerequisites
+     **Node.js and npm**
+     **Elasticsearch**
+     **Grafana**
