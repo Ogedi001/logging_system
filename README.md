@@ -59,13 +59,13 @@ The backend is built with Node.js and Express.js, providing APIs to ingest and m
 
 5. **Configure Grafana:**
     - Ensure Grafana is running locally or on cloud
-    - Connect to elasticsearch datasource
+    - Configure and connect to elasticsearch datasource
 
  **N/B** for more info on installation and set up visit [Grafana](https://grafana.com/docs/grafana/latest/)
 
 6. **Run the Application:**
     ```sh
-    npm start
+    npm start or npm run dev
     ```
 
-    The application will start on `http://localhost:5000`.
+    The application will start on `http://localhost:PORT`.
