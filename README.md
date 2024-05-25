@@ -72,3 +72,59 @@ The backend is built with Node.js and Express.js, providing APIs to ingest and m
     ```
 
     The application will start on `http://localhost:PORT`.
+
+
+
+## Usage
+
+### API Endpoints
+  - Endpoint: `POST http://localhost:PORT/api/log/local`  //using local configuration
+  - Endpoint: `POST http://localhost:PORT/api/log/cloud`  //using cloud configuration
+
+- **Ingest Log Data cloud:**
+    - Endpoint: `POST http://localhost:PORT/api/log/cloud`
+    - Description: Ingest log data into Elasticsearch running on cloud
+    - Body Parameters:
+        - `logName` (string): The name of the log index.
+        - `logData` (object): The log data to be ingested.
+
+    Example Request:
+    ```sh
+    curl -X POST http://localhost:PORT/api/log/cloud` -H 'Content-Type: application/json' -d '{
+        "logName": "example-log",
+        "logData": {
+            "message": "This is a log message",
+            "level": "info"
+        }
+    }'
+    ```
+
+- **Ingest Log Data local:**
+    - Endpoint: `POST http://localhost:PORT/api/log/local`
+    - Description: Ingest log data into Elasticsearch.
+    - Body Parameters:
+        - `logName` (string): The name of the log index.
+        - `logData` (object): The log data to be ingested.
+
+    Example Request:
+    ```sh
+    curl -X POST http://localhost:PORT/api/log/local` -H 'Content-Type: application/json' -d '{
+        "logName": "example-log",
+        "logData": {
+            "message": "This is a log message",
+            "level": "info"
+        }
+    }'
+    ```
+
+
+## Contributing
+Contributions are welcome! Please open an issue or submit a pull request for any improvements or bug fixes.
+
+## Contact
+For any questions or inquiries, please contact ogedifavour2@gmail.com.
+
+---
+
+Enjoy using the Logging System!
+
