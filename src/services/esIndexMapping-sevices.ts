@@ -1,6 +1,6 @@
 import { elasticsearchClientCloud } from "../config/elasticConfig";
-
-export const createIndexWithMapping = async (indexName: string) => {
+import { NextFunction } from "express";
+export const createIndexWithMapping = async (indexName: string,next:NextFunction) => {
   const mapping: Record<string, any> = {
     mappings: {
       properties: {
@@ -8,9 +8,13 @@ export const createIndexWithMapping = async (indexName: string) => {
       },
     },
   };
-
-  await elasticsearchClientCloud.indices.create({
-    index: indexName,
-    body: mapping,
-  });
+try {
+    await elasticsearchClientCloud.indices.create({
+        index: indexName,
+        body: mapping,
+      });
+} catch (error) {
+    next(error)
+}
+  
 };

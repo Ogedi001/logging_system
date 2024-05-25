@@ -21,18 +21,18 @@ export const createLogs = async (
   }
 
   const indexExists = await elasticsearchClientCloud.indices.exists({
-    index: logName,
+    index: logName.toLowerCase(),
   });
 
   if (!indexExists) {
-    createIndexWithMapping(logName);
+    createIndexWithMapping(logName.toLowerCase(),next);
   }
   const response = await elasticsearchClientCloud.index({
-    index: logName,
+    index: logName.toLowerCase(),
     document: {
       ...logData,
       "@timestamp": new Date().toISOString(),
     },
   });
-  res.status(StatusCodes.CREATED).json({ message: "success", data: response });
+ return res.status(StatusCodes.CREATED).json({ message: "success", data: response });
 };
