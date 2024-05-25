@@ -15,13 +15,10 @@ The backend is built with Node.js and Express.js, providing APIs to ingest and m
 
 ## Features
 
- **Log Ingestion:** API endpoints to ingest logs into Elasticsearch.
-
- **Index Management:** Automatically create and manage indices in Elasticsearch.
-
- **Data Visualization:** Pre-configured Grafana dashboards for log visualization and analysis.
-
- **Timestamp Management:** Automatic addition of @timestamp field to log entries for precise time-based querying.
+ - **Log Ingestion:** API endpoints to ingest logs into Elasticsearch.
+ - **Index Management:** Automatically create and manage indices in Elasticsearch.
+ - **Data Visualization:** Pre-configured Grafana dashboards for log visualization and analysis.
+ - **Timestamp Management:** Automatic addition of @timestamp field to log entries for precise time-based querying.
 
 ## Installation
 
