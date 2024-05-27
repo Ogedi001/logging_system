@@ -4,6 +4,6 @@ import { createLogs, createLogs_cloud } from "../controller/log-controller";
 
 const router = Router()
 
-router.route('/local').post(createLogs)
-router.route('/cloud').post(createLogs_cloud)
+router.route('/local/:logName').post(createLogs)
+router.route('/cloud/:logName').post(createLogs_cloud)
 export {router as logRoute}

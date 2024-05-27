@@ -5,67 +5,76 @@ import {
   elasticsearchClientCloud,
 } from "../config/elasticConfig";
 import { BadRequestError } from "../errors";
-import { createIndexWithMapping, createIndexWithMappingCloud } from "../services/esIndexMapping-sevices";
+import {
+  createIndexWithMapping,
+  createIndexWithMappingCloud,
+} from "../services/esIndexMapping-sevices";
 
 export const createLogs_cloud = async (
   req: Request,
   res: Response,
   next: NextFunction
 ) => {
-  const { logName, logData }: { logName: string; logData: any } = req.body;
+  const { logName } = req.params;
+  const logData = req.body;
 
-  if (!logName || !logData) {
-    throw new BadRequestError(
-      'Both "logName" and "logData" fields are required'
-    );
+  if (!logData["@timestamp"]) {
+   logData["@timestamp"] = new Date().toISOString();
   }
 
+  if (!logName)
+    throw new BadRequestError('"logName" params field is required ');
+
+  if (!logData) {
+    throw new BadRequestError(' "logData" fields are required');
+  }
   const indexExists = await elasticsearchClientCloud.indices.exists({
     index: logName.toLowerCase(),
   });
 
   if (!indexExists) {
-    createIndexWithMappingCloud(logName.toLowerCase(),next);
+    await createIndexWithMappingCloud(logName.toLowerCase(), next);
   }
   const response = await elasticsearchClientCloud.index({
     index: logName.toLowerCase(),
-    document: {
-      ...logData,
-      "@timestamp": new Date().toISOString(),
-    },
+    document: logData,
   });
- return res.status(StatusCodes.CREATED).json({ message: "success", data: response });
+  return res
+    .status(StatusCodes.CREATED)
+    .json({ message: "success", data: response });
 };
 
-
-
 export const createLogs = async (
-    req: Request,
-    res: Response,
-    next: NextFunction
-  ) => {
-    const { logName, logData }: { logName: string; logData: any } = req.body;
-  
-    if (!logName || !logData) {
-      throw new BadRequestError(
-        'Both "logName" and "logData" fields are required'
-      );
-    }
-  
-    const indexExists = await elasticsearchClient.indices.exists({
-      index: logName.toLowerCase(),
-    });
-  
-    if (!indexExists) {
-      createIndexWithMapping(logName.toLowerCase(),next);
-    }
-    const response = await elasticsearchClient.index({
-      index: logName.toLowerCase(),
-      document: {
-        ...logData,
-        "@timestamp": new Date().toISOString(),
-      },
-    });
-   return res.status(StatusCodes.CREATED).json({ message: "success", data: response });
-  };
-  
+  req: Request,
+  res: Response,
+  next: NextFunction
+) => {
+  const { logName } = req.params;
+  const logData = req.body;
+
+  if (!logData["@timestamp"]) {
+    logData["@timestamp"] = new Date().toISOString();
+   }
+
+  if (!logName)
+    throw new BadRequestError('"logName" params field is required ');
+
+  if (!logData) {
+    throw new BadRequestError(' "logData" fields are required');
+  }
+
+  const indexExists = await elasticsearchClient.indices.exists({
+    index: logName.toLowerCase(),
+  });
+
+  if (!indexExists) {
+    createIndexWithMapping(logName.toLowerCase(), next);
+  }
+  const response = await elasticsearchClient.index({
+    index: logName.toLowerCase(),
+    document: logData,
+  });
+  return res
+    .status(StatusCodes.CREATED)
+    .json({ message: "success", data: response });
+};
