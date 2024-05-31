@@ -9,6 +9,7 @@ import {
   createIndexWithMapping,
   createIndexWithMappingCloud,
 } from "../services/esIndexMapping-sevices";
+import Logger from "../logger";
 
 export const createLogs_cloud = async (
   req: Request,
@@ -39,6 +40,7 @@ export const createLogs_cloud = async (
     index: logName.toLowerCase(),
     document: logData,
   });
+  Logger.info('Success')
   return res
     .status(StatusCodes.CREATED)
     .json({ message: "success", data: response });
@@ -74,6 +76,7 @@ export const createLogs = async (
     index: logName.toLowerCase(),
     document: logData,
   });
+  Logger.info('Success')
   return res
     .status(StatusCodes.CREATED)
     .json({ message: "success", data: response });
