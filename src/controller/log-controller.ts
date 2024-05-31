@@ -46,6 +46,7 @@ export const createLogs_cloud = async (
     .json({ message: "success", data: response });
 };
 
+
 export const createLogs = async (
   req: Request,
   res: Response,

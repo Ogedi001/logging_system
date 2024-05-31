@@ -47,7 +47,7 @@ export const errorHandlerMiddleware = async (
     if (err instanceof esErrors.ResponseError) {
       return res.status(StatusCodes.BAD_GATEWAY).json({
         errors: [
-          { message: "Elasticsearch response error", details: err.meta.body },
+          { message: "Elasticsearch response error", details: err.stack },
         ],
       });
     }
