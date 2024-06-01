@@ -27,7 +27,7 @@ export const errorHandlerMiddleware = async (
         errors: [
           {
             message: "Elasticsearch connection error",
-            details: err.meta?.body,
+            details: err.message,
           },
         ],
       });
@@ -38,7 +38,7 @@ export const errorHandlerMiddleware = async (
         errors: [
           {
             message: "Elasticsearch request timed out",
-            details: err.meta?.body,
+            details: err.message,
           },
         ],
       });
@@ -47,7 +47,7 @@ export const errorHandlerMiddleware = async (
     if (err instanceof esErrors.ResponseError) {
       return res.status(StatusCodes.BAD_GATEWAY).json({
         errors: [
-          { message: "Elasticsearch response error", details: err.stack },
+          { message: "Elasticsearch response error", details: err.message },
         ],
       });
     }
