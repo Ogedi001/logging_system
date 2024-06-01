@@ -2,16 +2,26 @@ import "dotenv/config";
 import "express-async-errors";
 import express, { Request, Response, Application } from "express";
 import { createServer } from "http";
+import cors from 'cors'
 
 import Logger from "./logger";
 import { ApplicationRoute } from "./routes";
 
-import { errorHandlerMiddleware,pageNotFound } from "./middleware";
+import { errorHandlerMiddleware, pageNotFound } from "./middleware";
 import { StatusCodes } from "http-status-codes";
 
 const app: Application = express();
 const server = createServer(app);
 const PORT = process.env.PORT || 4000;
+
+const corsOptions = {
+  origin: '*', // Allow all origins
+  methods: ['OPTIONS', 'POST', 'GET'],
+  allowedHeaders: ['X-Requested-With', 'X-Auth-Token', 'Content-Type', 'Content-Length', 'Authorization', 'Access-Control-Allow-Headers', 'Accept'],
+  credentials: true
+};
+
+app.use(cors(corsOptions));
 
 app.use(express.json());
 app.use(express.urlencoded({ extended: true }));
