@@ -20,7 +20,7 @@ export const createLogs_cloud = async (
   const logData = req.body;
 
   if (!logData["@timestamp"]) {
-   logData["@timestamp"] = new Date().toISOString();
+    logData["@timestamp"] = new Date().toISOString();
   }
 
   if (!logName)
@@ -54,10 +54,10 @@ export const createLogs = async (
 ) => {
   const { logName } = req.params;
   const logData = req.body;
-
+  
   if (!logData["@timestamp"]) {
     logData["@timestamp"] = new Date().toISOString();
-   }
+  }
 
   if (!logName)
     throw new BadRequestError('"logName" params field is required ');
@@ -73,6 +73,7 @@ export const createLogs = async (
   if (!indexExists) {
     createIndexWithMapping(logName.toLowerCase(), next);
   }
+  
   const response = await elasticsearchClient.index({
     index: logName.toLowerCase(),
     document: logData,

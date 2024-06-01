@@ -1,6 +1,5 @@
 import { Client } from "@elastic/elasticsearch"
 
-
 export const elasticsearchClient = new Client({
   node: process.env.ELASTIC_URL,
   auth: {
@@ -9,7 +8,10 @@ export const elasticsearchClient = new Client({
   },
   maxRetries: 5,
   requestTimeout: 60000,
-  sniffOnStart: true
+  sniffOnStart: true,
+  tls: {
+    rejectUnauthorized: false // Disables certificate verification
+  },
 })
 
 
