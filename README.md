@@ -70,7 +70,9 @@ The backend is built with Node.js and Express.js, providing APIs to ingest and m
 
 **N/B** for more info on installation and set up visit [Grafana](https://grafana.com/docs/grafana/latest/)
 
-![alt text](<src/assets/grafana es config.jpg>)
+![alt text](src/assets/grafana1.jpg)
+
+![alt text](src/assets/grafana2.jpg)
 
 6. **Run the Application:**
 
