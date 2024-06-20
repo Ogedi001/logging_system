@@ -68,7 +68,7 @@ The backend is built with Node.js and Express.js, providing APIs to ingest and m
 
 To see all executable program  or "Elasticsearch CLI commands"
 ```sh
-cd /usr/share/elasticsearch/bin
+cd /usr/share/elasticsearch
 ls
 ```
 2. **To reset password**
