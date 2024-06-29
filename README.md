@@ -68,17 +68,17 @@ The backend is built with Node.js and Express.js, providing APIs to ingest and m
 
 To see all executable program  or "Elasticsearch CLI commands"
 ```sh
-cd /usr/share/elasticsearch
+cd /usr/share/elasticsearch/bin
 ls
 ```
 2. **To reset password**
 ```sh
-    sudo bin/elasticsearch-reset-password
+    sudo ./elasticsearch-reset-password
 ```
 
 3. **To generate enrolement token for kibana**
  ```sh
-    sudo bin/elasticsearch-create-enrollment-token --scope kibana
+    sudo ./elasticsearch-create-enrollment-token --scope kibana
 ```
 
 4. **Start Elasticsearch**
@@ -134,7 +134,7 @@ https://localhost:9200
     Follow the instructions from the [Kibana installation guide](https://www.elastic.co/guide/en/kibana/current/install.html) to download and install Kibana.
 
 2. **Configure Kibana:**
-   To see all executable program  or "Elasticsearch CLI commands"
+   To see all executable program  or "Kibana CLI commands"
    ```sh
    cd /usr/share/kibana/bin
     ls
@@ -175,7 +175,12 @@ http://localhost:5601
 ```
 - Copy and paste elasticsearch enrollment token 
 - Sign up automatically
+
+or 
+
 - Login with your Elasticsearh
+
+then
 - Go to kibana dashboard
 - Go to Stack Management
 - Index Mangement 
